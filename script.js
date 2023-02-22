@@ -1,16 +1,18 @@
 // 1er paso: Seleccionar los elementos del DOM y guardarlos en variables
 const scoreField = document.querySelector('.score');
 const checkButton = document.querySelector('.check');
-scoreField.textContent = 10;
+const againButton = document.querySelector('.again');
+const guessField = document.querySelector('.guess');
+const highScoreField = document.querySelector('.highscore');
+const messageField = document.querySelector('.message');
+const numberField = document.querySelector('.number');
 
-//const secretNumber = Math.trunc(Math.random() * 20) + 1;
-
-// function alerta() {
-//   alert('Me hiciste click');
-// }
-
-checkButton.addEventListener('click', function alerta() {
-  alert('Hola mundo');
-});
-
-// againButton.addEventListener('click', function reiniciar() {});
+console.log(
+  scoreField,
+  checkButton,
+  againButton,
+  guessField,
+  highScoreField,
+  messageField,
+  numberField
+);
