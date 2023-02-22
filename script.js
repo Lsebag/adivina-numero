@@ -9,17 +9,17 @@ const numberField = document.querySelector('.number');
 const bodyField = document.querySelector('body');
 
 // 2do paso: Crear las variables que necesitamos
-let score = 20;
+let score;
 let highscore = 0;
 
 //Obtener un número aleatorio entre 1 y 20
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 20;
-const secretNumber = Math.trunc(Math.random() * MAX_NUMBER) + MIN_NUMBER;
+let secretNumber;
 //También se puede hacer:
 //const secretNumber = Number.parseInt(Math.random() * 20);
 
-console.log(`El número secreto es ${secretNumber}`);
+fnInitApp();
 
 // 3er paso: capturar el checkButton y agregarle un evento y mostrar
 // un mensaje que diga si el número es mayor o menor en el campo
@@ -40,10 +40,12 @@ function fnCheckButton() {
     if (score > highscore) highscore = highScoreField.textContent = score;
     numberField.textContent = secretNumber;
     bodyField.style.backgroundColor = 'green';
+    checkButton.disabled = true;
   } else if (score === 1) {
     mostrarMensaje('¡Perdiste!');
     scoreField.textContent = 0;
     bodyField.style.backgroundColor = 'red';
+    checkButton.disabled = true;
   } else {
     const mensaje =
       number < secretNumber
@@ -53,4 +55,17 @@ function fnCheckButton() {
     score--;
     scoreField.textContent = score;
   }
+}
+
+againButton.addEventListener('click', fnInitApp);
+
+function fnInitApp() {
+  score = 20;
+  scoreField.textContent = score;
+  guessField.value = '';
+  secretNumber = Math.trunc(Math.random() * MAX_NUMBER) + MIN_NUMBER;
+  console.log(`El número secreto es ${secretNumber}`);
+  mostrarMensaje('Empieza a adivinar...');
+  bodyField.style.backgroundColor = '#222';
+  numberField.textContent = '?';
 }
