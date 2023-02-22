@@ -4,7 +4,8 @@
   "description": "Juego de adivinar un número",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "scp -P 22123 /home/alumno/Escritorio/desarrollo-aplicaciones-web/Javascript/adivina-numero/* sebas@sebas.certweb.infenlaces.com:/home/sebas/sebajs/"
   },
   "repository": {
     "type": "git",

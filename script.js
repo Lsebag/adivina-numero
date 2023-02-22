@@ -69,3 +69,6 @@ function fnInitApp() {
   bodyField.style.backgroundColor = '#222';
   numberField.textContent = '?';
 }
+
+localStorage.setItem('highscore', 10);
+//localStorage.getItem('highscore')
