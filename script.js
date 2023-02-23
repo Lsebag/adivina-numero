@@ -10,7 +10,7 @@ const bodyField = document.querySelector('body');
 
 // 2do paso: Crear las variables que necesitamos
 let score;
-let highscore = 0;
+let highscore;
 
 //Obtener un número aleatorio entre 1 y 20
 const MIN_NUMBER = 1;
@@ -37,7 +37,11 @@ function fnCheckButton() {
   if (number === secretNumber) {
     mostrarMensaje(`¡Ganaste! El número secreto era ${secretNumber}`);
     //La siguiente línea asigna de derecha a izquierda
-    if (score > highscore) highscore = highScoreField.textContent = score;
+    if (score > highscore) {
+      //Actualizar el highscore tanto en el DOM como en el localStorage
+      highscore = highScoreField.textContent = score;
+      localStorage.setItem('highscore', score);
+    }
     numberField.textContent = secretNumber;
     bodyField.style.backgroundColor = 'green';
     checkButton.disabled = true;
@@ -60,15 +64,15 @@ function fnCheckButton() {
 againButton.addEventListener('click', fnInitApp);
 
 function fnInitApp() {
+  checkButton.disabled = false;
   score = 20;
   scoreField.textContent = score;
   guessField.value = '';
+  highscore = Number(localStorage.getItem('highscore')) || 0;
+  highScoreField.textContent = highscore;
   secretNumber = Math.trunc(Math.random() * MAX_NUMBER) + MIN_NUMBER;
   console.log(`El número secreto es ${secretNumber}`);
   mostrarMensaje('Empieza a adivinar...');
   bodyField.style.backgroundColor = '#222';
   numberField.textContent = '?';
 }
-
-localStorage.setItem('highscore', 10);
-//localStorage.getItem('highscore')
